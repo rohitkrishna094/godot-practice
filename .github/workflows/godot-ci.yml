@@ -3,34 +3,57 @@ on: push
 
 env:
   GODOT_VERSION: 4.3
-  EXPORT_NAME: 1_platfomer_tutorial
-  PROJECT_PATH: 1_platfomer_tutorial
 
 jobs:
-  export-web:
-    name: Web Export
+  setup:
+    name: Setup Godot CI
     runs-on: ubuntu-20.04
     container:
       image: barichello/godot-ci
+    outputs:
+      godot-cache: ${{ steps.cache.outputs.cache-hit }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
         with:
           lfs: true
-      - name: Setup
+      - name: Cache Godot Export Templates
+        id: cache
+        uses: actions/cache@v3
+        with:
+          path: ~/.local/share/godot/export_templates/${{ env.GODOT_VERSION }}.stable
+          key: godot-${{ env.GODOT_VERSION }}-export-templates
+      - name: Setup Godot Export Templates
+        if: steps.cache.outputs.cache-hit != 'true'
         run: |
           mkdir -v -p ~/.local/share/godot/export_templates/
-          mv /root/.local/share/godot/export_templates/${GODOT_VERSION}.stable ~/.local/share/godot/export_templates/${GODOT_VERSION}.stable
+          mv /root/.local/share/godot/export_templates/${{ env.GODOT_VERSION }}.stable ~/.local/share/godot/export_templates/${{ env.GODOT_VERSION }}.stable
+
+  export:
+    name: Export and Deploy Projects
+    needs: setup
+    runs-on: ubuntu-20.04
+    strategy:
+      matrix:
+        project:
+          - 1_platformer_tutorial
+          - 2_vampire_survivor_tutorial
+          # Add more project directories here as needed
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          lfs: true
       - name: Web Build
         run: |
-          mkdir -v -p build/web/1_platformer_tutorial
-          cd $PROJECT_PATH
-          godot --headless --verbose --export-release "Web" ../build/web/1_platformer_tutorial/index.html
+          mkdir -v -p build/web/${{ matrix.project }}
+          cd ${{ matrix.project }}
+          godot --headless --verbose --export-release "Web" ../build/web/${{ matrix.project }}/index.html
       - name: Upload Artifact
         uses: actions/upload-artifact@v1
         with:
-          name: web
-          path: build/web
+          name: web-${{ matrix.project }}
+          path: build/web/${{ matrix.project }}
       - name: Install rsync 📚
         run: |
           apt-get update && apt-get install -y rsync
@@ -38,4 +61,5 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@v4.6.1
         with:
           branch: gh-pages # The branch the action should deploy to.
-          folder: build/web # The folder the action should deploy.
+          folder: build/web/${{ matrix.project }} # The folder the action should deploy.
+
