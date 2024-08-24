@@ -3,7 +3,6 @@ on: push
 
 env:
   GODOT_VERSION: 4.3
-  PROJECTS: '1_platformer_tutorial,2_vampire_survivor_tutorial'
 
 jobs:
   export-and-deploy:
@@ -12,21 +11,30 @@ jobs:
     container:
       image: barichello/godot-ci
     steps:
-      - name: Debug
-        run: |
-          echo $PROJECTS
       - name: Checkout
         uses: actions/checkout@v4
         with:
           lfs: true
+
       - name: Setup Godot Export Templates
         run: |
           mkdir -v -p ~/.local/share/godot/export_templates/
           mv /root/.local/share/godot/export_templates/${{ env.GODOT_VERSION }}.stable ~/.local/share/godot/export_templates/${{ env.GODOT_VERSION }}.stable
+
+      - name: List Directories and Set PROJECTS
+        id: list_dirs
+        run: |
+          PROJECTS=$(ls -d */ | sed 's#/##' | grep -v 'build' | tr '\n' ',' | sed 's/,$//')
+          echo "PROJECTS=$PROJECTS" >> $GITHUB_ENV
+
+      - name: Debug
+        run: |
+          echo $PROJECTS
+
       - name: Build and Deploy All Projects
         shell: bash
         run: |
-          IFS=',' read -r -a MY_PROJECTS <<< "${{ env.PROJECTS }}"
+          IFS=',' read -ra MY_PROJECTS <<< "${{ env.PROJECTS }}"
           for PROJECT in "${MY_PROJECTS[@]}"; do
             pwd
             ls -al
@@ -39,8 +47,9 @@ jobs:
             # Deploy to GitHub Pages
             rsync -avh --delete build/web/$PROJECT/ $GITHUB_WORKSPACE/build/web/$PROJECT/
           done
+
       - name: Deploy to GitHub Pages 🚀
         uses: JamesIves/github-pages-deploy-action@v4.6.1
         with:
-          branch: gh-pages # The branch the action should deploy to.
-          folder: build/web # The folder the action should deploy.
+          branch: gh-pages
+          folder: build/web
