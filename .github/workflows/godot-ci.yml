@@ -22,14 +22,9 @@ jobs:
           mv /root/.local/share/godot/export_templates/${{ env.GODOT_VERSION }}.stable ~/.local/share/godot/export_templates/${{ env.GODOT_VERSION }}.stable
 
       - name: List Directories and Set PROJECTS
-        id: list_dirs
         run: |
           PROJECTS=$(ls -d projects/*/ | sed 's#projects/##' | sed 's#/##' | grep -v 'build' | tr '\n' ',' | sed 's/,$//')
           echo "PROJECTS=$PROJECTS" >> $GITHUB_ENV
-
-      - name: Debug
-        run: |
-          echo $PROJECTS
 
       - name: Build and Deploy All Projects
         shell: bash

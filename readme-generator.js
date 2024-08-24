@@ -20,7 +20,7 @@ let dirs = getDirectories('./projects');
 let links = [];
 for (let i = 0; i < dirs.length; i++) {
     const subDir = dirs[i].replace('projects/', '');
-    links.push(`https://rohitkrishna094.github.io/${rootDir}/projects/${subDir}/`);
+    links.push(`https://rohitkrishna094.github.io/${rootDir}/${subDir}/`);
 }
 
 let content = `# [${heading}](https://rohitkrishna094.github.io/${rootDir}/)\n\n`;
