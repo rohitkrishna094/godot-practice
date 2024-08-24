@@ -41,7 +41,7 @@ jobs:
             echo "Building and deploying $PROJECT"
             mkdir -v -p build/web/$PROJECT
             cd projects/$PROJECT
-            godot --headless --verbose --export-release "Web" ../build/web/$PROJECT/index.html
+            godot --headless --verbose --export-release "Web" ../../build/web/$PROJECT/index.html
             cd ../..
             
             # Deploy to GitHub Pages
