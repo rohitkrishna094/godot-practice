@@ -6,7 +6,6 @@ env:
   PROJECTS: |
     1_platformer_tutorial
     2_vampire_survivor_tutorial
-    # Add more project directories here as needed
 
 jobs:
   export-and-deploy:
@@ -23,11 +22,13 @@ jobs:
         run: |
           mkdir -v -p ~/.local/share/godot/export_templates/
           mv /root/.local/share/godot/export_templates/${{ env.GODOT_VERSION }}.stable ~/.local/share/godot/export_templates/${{ env.GODOT_VERSION }}.stable
+      - name: Debug
+        run: |
+          echo $PROJECTS
       - name: Build and Deploy All Projects
         run: |
-          # Convert PROJECTS string into an array by splitting it on newlines
-          PROJECT_ARRAY=(${PROJECTS//$'\n'/ })
-          for PROJECT in "${PROJECT_ARRAY[@]}"; do
+          IFS=$'\n' # Set Internal Field Separator to handle spaces in filenames
+          for PROJECT in $PROJECTS; do
             echo "Building and deploying $PROJECT"
             mkdir -v -p build/web/$PROJECT
             cd $PROJECT
