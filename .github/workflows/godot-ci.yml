@@ -9,8 +9,8 @@ jobs:
   export-and-deploy:
     name: Export and Deploy Projects
     runs-on: ubuntu-20.04
-    # container:
-    #   image: barichello/godot-ci
+    container:
+      image: barichello/godot-ci
     steps:
       - name: Debug
         run: |
