@@ -24,7 +24,7 @@ jobs:
       - name: List Directories and Set PROJECTS
         id: list_dirs
         run: |
-          PROJECTS=$(ls -d */ | sed 's#/##' | grep -v 'build' | tr '\n' ',' | sed 's/,$//')
+          PROJECTS=$(ls -d projects/*/ | sed 's#projects/##' | sed 's#/##' | grep -v 'build' | tr '\n' ',' | sed 's/,$//')
           echo "PROJECTS=$PROJECTS" >> $GITHUB_ENV
 
       - name: Debug
@@ -40,9 +40,9 @@ jobs:
             ls -al
             echo "Building and deploying $PROJECT"
             mkdir -v -p build/web/$PROJECT
-            cd $PROJECT
+            cd projects/$PROJECT
             godot --headless --verbose --export-release "Web" ../build/web/$PROJECT/index.html
-            cd ..
+            cd ../..
             
             # Deploy to GitHub Pages
             rsync -avh --delete build/web/$PROJECT/ $GITHUB_WORKSPACE/build/web/$PROJECT/
