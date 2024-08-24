@@ -28,6 +28,8 @@ jobs:
         run: |
           IFS=',' read -r -a MY_PROJECTS <<< "${{ env.PROJECTS }}"
           for PROJECT in "${MY_PROJECTS[@]}"; do
+            pwd
+            ls -al
             echo "Building and deploying $PROJECT"
             mkdir -v -p build/web/$PROJECT
             cd $PROJECT
