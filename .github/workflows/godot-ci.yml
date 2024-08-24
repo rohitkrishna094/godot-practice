@@ -17,6 +17,15 @@ jobs:
         uses: actions/checkout@v4
         with:
           lfs: true
+      - name: Debug
+        run: |
+          echo $GODOT_VERSION
+          ls -al /root
+          ls -al /root/.local
+          ls -al /root/.local/share
+          ls -al /root/.local/share/godot
+          ls -al /root/.local/share/godot/export_templates
+          ls -al /root/.local/share/godot/export_templates/${GODOT_VERSION}.stable
       - name: Setup
         run: |
           mkdir -v -p ~/.local/share/godot/export_templates/
