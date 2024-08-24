@@ -4,3 +4,4 @@ These are some games in godot engine for practicing and learning gamedev. Click 
 
 * [1_platformer_tutorial](https://rohitkrishna094.github.io/godot-practice/1_platformer_tutorial/)
 * [2_vampire_survivor_tutorial](https://rohitkrishna094.github.io/godot-practice/2_vampire_survivor_tutorial/)
+* [3_pong](https://rohitkrishna094.github.io/godot-practice/3_pong/)
