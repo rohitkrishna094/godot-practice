@@ -6,7 +6,7 @@ env:
 
 jobs:
   export-and-deploy:
-    name: Export and Deploy Projects
+    name: Export and Deploy Projects to GitHub Pages
     runs-on: ubuntu-20.04
     container:
       image: barichello/godot-ci
@@ -36,18 +36,18 @@ jobs:
         run: |
           IFS=',' read -ra MY_PROJECTS <<< "${{ env.PROJECTS }}"
           for PROJECT in "${MY_PROJECTS[@]}"; do
-            pwd
-            ls -al
-            echo "Building and deploying $PROJECT"
-            mkdir -v -p build/web/$PROJECT
-            cd projects/$PROJECT
-            godot --headless --verbose --export-release "Web" ../../build/web/$PROJECT/index.html
-            cd ../..
-            
-            # Deploy to GitHub Pages
-            rsync -avh --delete build/web/$PROJECT/ $GITHUB_WORKSPACE/build/web/$PROJECT/
+            (
+              echo "Building and deploying $PROJECT"
+              mkdir -v -p build/web/$PROJECT
+              cd projects/$PROJECT
+              godot --headless --verbose --export-release "Web" ../../build/web/$PROJECT/index.html
+              cd ../..
+              
+              # Deploy to GitHub Pages
+              rsync -avh --delete build/web/$PROJECT/ $GITHUB_WORKSPACE/build/web/$PROJECT/
+            ) &
           done
-
+          wait
       - name: Deploy to GitHub Pages 🚀
         uses: JamesIves/github-pages-deploy-action@v4.6.1
         with:
