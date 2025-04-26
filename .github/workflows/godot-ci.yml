@@ -16,6 +16,10 @@ jobs:
         with:
           lfs: true
 
+      - name: Debug
+        run: |
+          ls -alR /root/.local/share
+
       - name: Setup Godot Export Templates
         run: |
           mkdir -v -p ~/.local/share/godot/export_templates/
