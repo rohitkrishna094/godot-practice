@@ -1,0 +1,21 @@
+[gd_scene load_steps=6 format=3 uid="uid://d267pq33vjkfn"]
+
+[ext_resource type="Texture2D" uid="uid://crtvi0mkpbweu" path="res://apple.png" id="1_dajs1"]
+[ext_resource type="Script" uid="uid://haktvojwme50" path="res://fruit.gd" id="1_t45jj"]
+[ext_resource type="Texture2D" uid="uid://bse3o5vh5kfd8" path="res://orange.png" id="3_asr7n"]
+[ext_resource type="Texture2D" uid="uid://ciji314588gw1" path="res://strawberry.png" id="4_dwo4u"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_t45jj"]
+radius = 275.409
+
+[node name="FruitArea2D" type="Area2D"]
+scale = Vector2(0.2, 0.2)
+script = ExtResource("1_t45jj")
+textures = Array[Texture2D]([ExtResource("1_dajs1"), ExtResource("3_asr7n"), ExtResource("4_dwo4u")])
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-49.9997, 30.0001)
+shape = SubResource("CircleShape2D_t45jj")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(1, 1)

@@ -1,0 +1,49 @@
+[gd_scene load_steps=8 format=3 uid="uid://ifw6ny1th6bm"]
+
+[ext_resource type="Script" uid="uid://cvbtn56exxs" path="res://scripts/4_player.gd" id="1_2l6qw"]
+[ext_resource type="Texture2D" uid="uid://cwsivp7hrxuj1" path="res://assets/4_catchinggame/basket.png" id="1_07vh7"]
+[ext_resource type="Script" uid="uid://cvkqfjfbsik4j" path="res://scripts/_fruit_spawner.gd" id="3_0gt3n"]
+[ext_resource type="Texture2D" uid="uid://b3kkws63fqkny" path="res://assets/4_catchinggame/apple.png" id="4_6ctba"]
+[ext_resource type="Texture2D" uid="uid://j30n8ncepvnj" path="res://assets/4_catchinggame/orange.png" id="5_2cu18"]
+[ext_resource type="Texture2D" uid="uid://bcy1m27x8oc51" path="res://assets/4_catchinggame/strawberry.png" id="6_mhgj6"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_07vh7"]
+radius = 58.0
+height = 166.0
+
+[node name="4CatchGame" type="Node2D"]
+
+[node name="Player" type="CharacterBody2D" parent="."]
+position = Vector2(560, 541)
+script = ExtResource("1_2l6qw")
+
+[node name="Sprite2D" type="Sprite2D" parent="Player"]
+scale = Vector2(0.299829, 0.299829)
+texture = ExtResource("1_07vh7")
+
+[node name="Area2D" type="Area2D" parent="Player"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/Area2D"]
+rotation = -1.57079
+shape = SubResource("CapsuleShape2D_07vh7")
+
+[node name="FruitSpawner" type="Node2D" parent="."]
+position = Vector2(560, 0)
+scale = Vector2(0.2, 0.2)
+script = ExtResource("3_0gt3n")
+apple_texture = ExtResource("4_6ctba")
+orange_texture = ExtResource("5_2cu18")
+strawberry_texture = ExtResource("6_mhgj6")
+
+[node name="FruitTimer" type="Timer" parent="."]
+autostart = true
+
+[node name="Label" type="Label" parent="."]
+offset_left = 1086.0
+offset_top = 2.0
+offset_right = 1126.0
+offset_bottom = 57.0
+theme_override_font_sizes/font_size = 40
+text = "0"
+
+[connection signal="timeout" from="FruitTimer" to="FruitSpawner" method="_on_fruit_timer_timeout"]

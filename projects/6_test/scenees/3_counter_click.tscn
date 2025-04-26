@@ -1,0 +1,36 @@
+[gd_scene load_steps=4 format=3 uid="uid://dawhmmecvlsng"]
+
+[ext_resource type="Script" uid="uid://c2kpr1s7siku0" path="res://scripts/3_counter_click.gd" id="1_suqy8"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uieuw"]
+bg_color = Color(0.164384, 0.337431, 0.477, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_suqy8"]
+bg_color = Color(0.0930563, 0.557408, 0.341558, 1)
+
+[node name="3CounterClick" type="Node2D"]
+script = ExtResource("1_suqy8")
+
+[node name="Button" type="Button" parent="."]
+offset_left = 418.0
+offset_top = 304.0
+offset_right = 715.0
+offset_bottom = 462.0
+mouse_default_cursor_shape = 2
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_uieuw")
+text = "Click Me"
+
+[node name="Label" type="Label" parent="."]
+offset_left = 433.0
+offset_top = 81.0
+offset_right = 709.0
+offset_bottom = 219.0
+theme_override_colors/font_color = Color(0.786833, 0.274581, 0.560201, 1)
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_suqy8")
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
