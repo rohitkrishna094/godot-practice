@@ -13,3 +13,4 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 	var score = int(label.text)
 	label.text = str(score + 1)
 	area.queue_free()
+	
