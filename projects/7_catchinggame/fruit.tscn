@@ -18,4 +18,3 @@ position = Vector2(-49.9997, 30.0001)
 shape = SubResource("CircleShape2D_t45jj")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(1, 1)

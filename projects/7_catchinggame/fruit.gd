@@ -8,6 +8,7 @@ var screen_size : Vector2
 @export var textures: Array[Texture2D]  # Drag your textures here in the editor
 
 func _ready():
+	fall_speed = randf_range(150, 500) 
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)  # Hide the cursor
 	screen_size = get_viewport().size
 	position.x = randf_range(0, screen_size.x)  # Spawn fruit at random X position
