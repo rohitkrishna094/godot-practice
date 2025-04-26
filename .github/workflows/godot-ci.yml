@@ -2,7 +2,7 @@ name: 'godot-ci export'
 on: push
 
 env:
-  GODOT_VERSION: 4.3
+  GODOT_VERSION: 4.4.1.stable
 
 jobs:
   export-and-deploy:
