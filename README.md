@@ -9,3 +9,4 @@ These are some games in godot engine for practicing and learning gamedev. Click 
 * [5_color_switch](https://rohitkrishna094.github.io/godot-practice/5_color_switch/)
 * [6_test](https://rohitkrishna094.github.io/godot-practice/6_test/)
 * [7_catchinggame](https://rohitkrishna094.github.io/godot-practice/7_catchinggame/)
+* [8_snake](https://rohitkrishna094.github.io/godot-practice/8_snake/)
