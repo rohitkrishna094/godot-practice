@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://dihhk4bfuhbii"]
+
+[ext_resource type="Script" uid="uid://bfrrwhsgys3qn" path="res://main.gd" id="1_ig7tw"]
+[ext_resource type="AudioStream" uid="uid://byjh24m6qbqju" path="res://background_music.ogg" id="2_0xm2m"]
+[ext_resource type="AudioStream" uid="uid://begvwl2k8esh1" path="res://crunchybite.ogg" id="3_h2yge"]
+[ext_resource type="AudioStream" uid="uid://cotbutjg0ecyf" path="res://gameover.wav" id="4_1bvp3"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_ig7tw")
+food_color = Color(0.876278, 0.266487, 0.761828, 1)
+snake_color = Color(5.29438e-07, 0.654783, 0.30312, 1)
+stroke_color = Color(0, 0.377572, 0.162511, 1)
+
+[node name="ScoreLabel" type="Label" parent="."]
+offset_left = 10.0
+offset_right = 101.0
+offset_bottom = 34.0
+theme_override_font_sizes/font_size = 24
+text = "Score: 0"
+
+[node name="RestartLabel" type="Label" parent="."]
+offset_left = 20.0
+offset_right = 111.0
+offset_bottom = 34.0
+theme_override_font_sizes/font_size = 24
+
+[node name="BackgroundAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_0xm2m")
+autoplay = true
+parameters/looping = true
+
+[node name="EatAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_h2yge")
+
+[node name="GameOverAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_1bvp3")

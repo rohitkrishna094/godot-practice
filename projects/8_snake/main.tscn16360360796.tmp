@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://dihhk4bfuhbii"]
+
+[ext_resource type="Script" uid="uid://bfrrwhsgys3qn" path="res://main.gd" id="1_ig7tw"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_ig7tw")
+food_color = Color(0.876278, 0.266487, 0.761828, 1)
+snake_color = Color(5.29438e-07, 0.654783, 0.30312, 1)
+stroke_color = Color(0, 0.377572, 0.162511, 1)
