@@ -10,3 +10,4 @@ These are some games in godot engine for practicing and learning gamedev. Click 
 * [6_test](https://rohitkrishna094.github.io/godot-practice/6_test/)
 * [7_catchinggame](https://rohitkrishna094.github.io/godot-practice/7_catchinggame/)
 * [8_snake](https://rohitkrishna094.github.io/godot-practice/8_snake/)
+* [9_breakout](https://rohitkrishna094.github.io/godot-practice/9_breakout/)
