@@ -1,0 +1,61 @@
+[gd_scene load_steps=10 format=3 uid="uid://cyt6m5mwcspyp"]
+
+[ext_resource type="PackedScene" uid="uid://b5yqr1p15dhg1" path="res://scenes/paddle.tscn" id="1_2q6dc"]
+[ext_resource type="Script" uid="uid://dntvlb7kukxas" path="res://scripts/level.gd" id="1_w8frs"]
+[ext_resource type="PackedScene" uid="uid://d2l7cjspan18h" path="res://scenes/ball.tscn" id="2_w7c3h"]
+[ext_resource type="Texture2D" uid="uid://be242unaq1go3" path="res://assets/background.png" id="3_ppgk2"]
+[ext_resource type="PackedScene" uid="uid://8bwj7i0isx7f" path="res://scenes/brick.tscn" id="3_w8frs"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w7c3h"]
+size = Vector2(20, 656.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w8frs"]
+size = Vector2(20, 656.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mx8sn"]
+size = Vector2(20, 1195)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2r41h"]
+size = Vector2(1190, 20)
+
+[node name="Level" type="Node2D"]
+script = ExtResource("1_w8frs")
+brickObj = ExtResource("3_w8frs")
+
+[node name="Background" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.180392)
+position = Vector2(567, 348)
+texture = ExtResource("3_ppgk2")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(576, 324)
+
+[node name="Paddle" parent="." instance=ExtResource("1_2q6dc")]
+position = Vector2(582, 590)
+motion_mode = 1
+
+[node name="Ball" parent="." instance=ExtResource("2_w7c3h")]
+position = Vector2(569, 577)
+
+[node name="Walls" type="StaticBody2D" parent="."]
+
+[node name="Left" type="CollisionShape2D" parent="Walls"]
+position = Vector2(-9, 318.75)
+shape = SubResource("RectangleShape2D_w7c3h")
+
+[node name="Right" type="CollisionShape2D" parent="Walls"]
+position = Vector2(1162, 318.75)
+shape = SubResource("RectangleShape2D_w8frs")
+
+[node name="Top" type="CollisionShape2D" parent="Walls"]
+position = Vector2(578.5, -11)
+rotation = -1.5708
+shape = SubResource("RectangleShape2D_mx8sn")
+
+[node name="Deathzone" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Deathzone"]
+position = Vector2(577, 658)
+shape = SubResource("RectangleShape2D_2r41h")
+
+[connection signal="body_entered" from="Deathzone" to="Ball" method="_on_deathzone_body_entered"]
