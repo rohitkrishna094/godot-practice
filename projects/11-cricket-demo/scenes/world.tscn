@@ -1,0 +1,93 @@
+[gd_scene load_steps=13 format=3 uid="uid://cgi2nqeiisbn0"]
+
+[ext_resource type="Script" uid="uid://cdgcbklc6a4re" path="res://scripts/bowler.gd" id="1_nnsk1"]
+[ext_resource type="PackedScene" uid="uid://cu7t5byy2ctdk" path="res://scenes/ball.tscn" id="2_rwgxs"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_e5uuo"]
+size = Vector3(50, 0.5, 50)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e5uuo"]
+albedo_color = Color(0.48336232, 1, 0.24361992, 1)
+roughness = 0.79
+
+[sub_resource type="BoxMesh" id="BoxMesh_nnsk1"]
+size = Vector3(50, 0.5, 50)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_rwgxs"]
+friction = 0.4
+bounce = 0.2
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_nnsk1"]
+size = Vector3(3, 0.2, 20)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nnsk1"]
+albedo_color = Color(0.7322132, 0.62606484, 0.44950444, 1)
+roughness = 0.6
+
+[sub_resource type="BoxMesh" id="BoxMesh_e5uuo"]
+size = Vector3(3, 0.2, 30)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rwgxs"]
+size = Vector3(0.5, 1.2, 0.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_4wyf3"]
+size = Vector3(0.5, 1.2, 0.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_rwgxs"]
+size = Vector3(0.5, 1.8, 0.5)
+
+[node name="World" type="Node3D"]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-1, 3.6946464e-08, -7.923194e-08, 0, 0.90630776, 0.42261827, 8.742278e-08, 0.42261827, -0.90630776, 0, 3.5, -13)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.70710677, 0.70710677, 0, -0.70710677, 0.70710677, 0, 0, 0)
+
+[node name="Ground" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
+shape = SubResource("BoxShape3D_e5uuo")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground"]
+material_override = SubResource("StandardMaterial3D_e5uuo")
+mesh = SubResource("BoxMesh_nnsk1")
+
+[node name="Pitch" type="StaticBody3D" parent="."]
+physics_material_override = SubResource("PhysicsMaterial_rwgxs")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Pitch"]
+shape = SubResource("BoxShape3D_nnsk1")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Pitch"]
+material_override = SubResource("StandardMaterial3D_nnsk1")
+mesh = SubResource("BoxMesh_e5uuo")
+
+[node name="WicketA" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, -9)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WicketA"]
+shape = SubResource("BoxShape3D_rwgxs")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="WicketA"]
+mesh = SubResource("BoxMesh_4wyf3")
+
+[node name="WicketB" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 9)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WicketB"]
+shape = SubResource("BoxShape3D_rwgxs")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="WicketB"]
+mesh = SubResource("BoxMesh_4wyf3")
+
+[node name="Bowler" type="Node3D" parent="."]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, -10)
+script = ExtResource("1_nnsk1")
+ball_scene = ExtResource("2_rwgxs")
+speed = 50.0
+ball_type = "spin"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Bowler"]
+mesh = SubResource("BoxMesh_rwgxs")

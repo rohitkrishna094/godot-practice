@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://cu7t5byy2ctdk"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_n1dj2"]
+friction = 0.3
+bounce = 0.45
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_n1dj2"]
+radius = 0.11
+
+[sub_resource type="SphereMesh" id="SphereMesh_7s4qf"]
+radius = 0.11
+height = 0.22
+radial_segments = 32
+rings = 16
+
+[node name="Ball" type="RigidBody3D"]
+mass = 0.16
+physics_material_override = SubResource("PhysicsMaterial_n1dj2")
+linear_damp = 0.05
+angular_damp = 0.05
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_n1dj2")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_7s4qf")
