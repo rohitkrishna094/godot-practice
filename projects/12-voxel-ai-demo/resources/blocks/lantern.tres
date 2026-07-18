@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="BlockType" format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/block_type.gd" id="1_ql8xg"]
+
+[resource]
+script = ExtResource("1_ql8xg")
+id = "lantern"
+name = "Lantern"
+metallic = 0.5
+roughness = 0.4
+emission_color = Color(1, 0.4, 0, 1)
+emission_energy = 2.0
+top_texture = "res://resources/blocks/textures/lantern.png"
+side_texture = "res://resources/blocks/textures/lantern.png"
+bottom_texture = "res://resources/blocks/textures/lantern.png"

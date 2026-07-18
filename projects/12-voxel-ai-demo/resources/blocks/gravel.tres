@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="BlockType" format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/block_type.gd" id="1_wvfgk"]
+
+[resource]
+script = ExtResource("1_wvfgk")
+id = "gravel"
+name = "Gravel"
+top_texture = "res://resources/blocks/textures/gravel.png"
+side_texture = "res://resources/blocks/textures/gravel.png"
+bottom_texture = "res://resources/blocks/textures/gravel.png"

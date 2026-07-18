@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="BlockType" format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/block_type.gd" id="1_7w64x"]
+
+[resource]
+script = ExtResource("1_7w64x")
+top_texture = "res://resources/blocks/textures/stone.png"
+side_texture = "res://resources/blocks/textures/stone.png"
+bottom_texture = "res://resources/blocks/textures/stone.png"

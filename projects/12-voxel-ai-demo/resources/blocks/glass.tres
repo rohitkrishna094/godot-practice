@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="BlockType" format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/block_type.gd" id="1_4umfg"]
+
+[resource]
+script = ExtResource("1_4umfg")
+id = "glass"
+name = "Glass"
+roughness = 0.05
+transparency = 1.0
+top_texture = "res://resources/blocks/textures/glass.png"
+side_texture = "res://resources/blocks/textures/glass.png"
+bottom_texture = "res://resources/blocks/textures/glass.png"

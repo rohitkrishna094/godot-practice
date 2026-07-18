@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="BlockType" format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/block_type.gd" id="1_pxh35"]
+
+[resource]
+script = ExtResource("1_pxh35")
+id = "grass"
+name = "Grass"
+top_texture = "res://resources/blocks/textures/grass_top.png"
+side_texture = "res://resources/blocks/textures/grass_side.png"
+bottom_texture = "res://resources/blocks/textures/dirt.png"

@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="BlockType" format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/block_type.gd" id="1_fnu5m"]
+
+[resource]
+script = ExtResource("1_fnu5m")
+id = "concrete"
+name = "Concrete"
+roughness = 0.6
+top_texture = "res://resources/blocks/textures/concrete.png"
+side_texture = "res://resources/blocks/textures/concrete.png"
+bottom_texture = "res://resources/blocks/textures/concrete.png"

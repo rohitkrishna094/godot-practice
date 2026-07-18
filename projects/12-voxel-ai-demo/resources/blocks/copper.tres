@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="BlockType" format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/block_type.gd" id="1_e270i"]
+
+[resource]
+script = ExtResource("1_e270i")
+id = "copper"
+name = "Copper"
+metallic = 0.8
+roughness = 0.3
+top_texture = "res://resources/blocks/textures/copper.png"
+side_texture = "res://resources/blocks/textures/copper.png"
+bottom_texture = "res://resources/blocks/textures/copper.png"

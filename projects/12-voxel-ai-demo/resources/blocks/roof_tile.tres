@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="BlockType" format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/block_type.gd" id="1_a44g5"]
+
+[resource]
+script = ExtResource("1_a44g5")
+id = "roof_tile"
+name = "Roof Tile"
+roughness = 0.7
+top_texture = "res://resources/blocks/textures/roof_tile.png"
+side_texture = "res://resources/blocks/textures/roof_tile.png"
+bottom_texture = "res://resources/blocks/textures/roof_tile.png"

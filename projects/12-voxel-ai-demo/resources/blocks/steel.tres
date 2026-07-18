@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="BlockType" format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/block_type.gd" id="1_tnmp1"]
+
+[resource]
+script = ExtResource("1_tnmp1")
+id = "steel"
+name = "Steel"
+metallic = 0.9
+roughness = 0.2
+top_texture = "res://resources/blocks/textures/steel.png"
+side_texture = "res://resources/blocks/textures/steel.png"
+bottom_texture = "res://resources/blocks/textures/steel.png"

@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="BlockType" format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/block_type.gd" id="1_ttcl5"]
+
+[resource]
+script = ExtResource("1_ttcl5")
+id = "water"
+name = "Water"
+metallic = 0.3
+roughness = 0.1
+transparency = 0.7
+top_texture = "res://resources/blocks/textures/water.png"
+side_texture = "res://resources/blocks/textures/water.png"
+bottom_texture = "res://resources/blocks/textures/water.png"

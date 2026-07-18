@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="BlockType" format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/block_type.gd" id="1_7r73i"]
+
+[resource]
+script = ExtResource("1_7r73i")
+id = "marble"
+name = "Marble"
+metallic = 0.1
+roughness = 0.3
+top_texture = "res://resources/blocks/textures/marble.png"
+side_texture = "res://resources/blocks/textures/marble.png"
+bottom_texture = "res://resources/blocks/textures/marble.png"
